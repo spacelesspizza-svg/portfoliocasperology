@@ -186,24 +186,19 @@ function ProjectCard({ project, large = false }: { project: Project; large?: boo
 
 function CaseSection({ project, index }: { project: Project; index: number }) {
   return (
-    <section id={index === 0 ? "work" : project.title} className="px-5 py-24 md:px-10 lg:px-14">
-      <div className="mb-8 flex items-start justify-between gap-6 text-sm uppercase tracking-tight">
-        <Typography as="a" href="#work" className="hover:opacity-50">
-          ← к списку работ
-        </Typography>
-        <span>
-          ({String(index + 1).padStart(2, "0")}/{String(projects.length).padStart(2, "0")})
-        </span>
+    <section id={index === 0 ? "work" : project.title} className="px-5 py-16 md:px-10 md:py-24 lg:px-14">
+      <div className="mb-6 text-right text-[10px] uppercase tracking-tight md:mb-8 md:text-sm">
+        ({String(index + 1).padStart(2, "0")}/{String(projects.length).padStart(2, "0")})
       </div>
 
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr] lg:gap-16">
         <aside className="lg:sticky lg:top-10 lg:h-fit">
-          <h2 className="text-6xl font-black uppercase leading-[0.85] tracking-tighter md:text-8xl">
+          <h2 className="text-4xl font-black uppercase leading-[0.88] tracking-tighter sm:text-5xl md:text-6xl md:leading-[0.85] lg:text-8xl">
             {project.title}
           </h2>
           <Typography
             as="p"
-            className="mt-8 max-w-md whitespace-pre-line text-pretty text-lg leading-tight text-neutral-600"
+            className="mt-6 max-w-md whitespace-pre-line text-pretty text-base leading-tight text-neutral-600 md:mt-8 md:text-lg"
           >
             {project.description}
           </Typography>
@@ -247,30 +242,29 @@ function CaseSection({ project, index }: { project: Project; index: number }) {
 export default function PortfolioSite() {
   return (
     <main className="min-h-screen bg-[#f4f3ef] text-neutral-950 selection:bg-neutral-950 selection:text-white">
-      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between bg-[#f4f3ef] px-5 py-5 text-xs font-medium uppercase tracking-tight text-neutral-950 md:px-10 lg:px-14">
-        <a href="#top">
+      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between bg-[#f4f3ef] px-5 py-4 text-[10px] font-medium uppercase leading-tight tracking-tight text-neutral-950 md:px-10 md:py-5 md:text-xs lg:px-14">
+        <a href="#top" className="text-[10px] md:text-xs">
           саша
           <br />
           касперолоджи
         </a>
-        <div className="flex gap-6">
+        <div className="flex gap-3 md:gap-6">
           <a href="#work">мои работы</a>
-          <a href="#about">обо мне</a>
           <a href={`mailto:${profile.email}`}>контакты</a>
         </div>
       </nav>
 
-      <section id="top" className="relative min-h-screen overflow-hidden px-5 pt-28 md:px-10 lg:px-14">
+      <section id="top" className="relative min-h-screen overflow-hidden px-5 pt-24 md:px-10 md:pt-28 lg:px-14">
         <div className="grid min-h-[calc(100vh-7rem)] grid-cols-1 items-stretch gap-6 lg:grid-cols-[1fr_1.15fr]">
           <div className="flex flex-col">
             <div>
-              <h1 className="whitespace-pre-line text-7xl font-black uppercase leading-[0.82] tracking-tighter md:text-8xl lg:text-[8.5rem]">
+              <h1 className="whitespace-pre-line text-[2.75rem] font-black uppercase leading-[0.82] tracking-tighter sm:text-5xl md:text-7xl md:leading-[0.82] lg:text-8xl lg:text-[8.5rem]">
                 {profile.name}
               </h1>
-              <p className="mt-8 whitespace-pre-line text-xl uppercase leading-tight tracking-tight md:text-2xl">
+              <p className="mt-6 whitespace-pre-line text-base uppercase leading-tight tracking-tight md:mt-8 md:text-xl lg:text-2xl">
                 {profile.role}
               </p>
-              <div className="mt-8 text-lg leading-tight text-neutral-400">
+              <div className="mt-6 text-base leading-tight text-neutral-400 md:mt-8 md:text-lg">
                 {profile.intro.map((item) => (
                   <div key={item}>{item}</div>
                 ))}
@@ -291,20 +285,8 @@ export default function PortfolioSite() {
             />
           </div>
         </div>
-        <div className="absolute bottom-8 right-8 text-xs uppercase">scroll ↓</div>
-      </section>
-
-      <section id="about" className="px-5 py-28 md:px-10 lg:px-14">
-        <div className="border-t border-neutral-300 pt-8">
-          <h2 className="text-sm uppercase">обо мне</h2>
-          <div className="mt-8 w-full max-w-4xl space-y-6 text-4xl font-semibold leading-[0.95] tracking-tighter md:mt-[96pt] md:max-w-none md:text-6xl md:leading-[1.05]">
-            <Typography as="p" className="text-pretty">
-              6 лет создаю спец проекты и гайдлайны для bigtech
-            </Typography>
-            <Typography as="p" className="text-pretty">
-              люблю и умею работать на стыке брендинга, коммуникаций и цифровых сервисов
-            </Typography>
-          </div>
+        <div className="absolute bottom-6 right-5 text-[10px] uppercase md:bottom-8 md:right-8 md:text-xs">
+          scroll ↓
         </div>
       </section>
 
@@ -314,7 +296,10 @@ export default function PortfolioSite() {
 
       <footer className="flex flex-col gap-6 border-t border-neutral-300 px-5 py-8 text-sm md:flex-row md:items-end md:justify-between md:px-10 lg:px-14">
         <span>© 2026</span>
-        <a href={`mailto:${profile.email}`} className="text-3xl font-semibold tracking-tight">
+        <a
+          href={`mailto:${profile.email}`}
+          className="text-xl font-semibold tracking-tight md:text-2xl lg:text-3xl"
+        >
           {profile.email}
         </a>
       </footer>
