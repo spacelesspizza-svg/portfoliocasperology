@@ -1,17 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type CaseGallerySlideshowProps = {
   frames: string[];
   intervalMs?: number;
-  aspect?: "4/3" | "16/10";
+  aspect?: "4/3" | "16/10" | "2048/1280";
 };
 
 export function CaseGallerySlideshow({
   frames,
   intervalMs = 2000,
-  aspect = "16/10",
+  aspect = "2048/1280",
 }: CaseGallerySlideshowProps) {
   const [index, setIndex] = useState(0);
 
@@ -23,16 +24,25 @@ export function CaseGallerySlideshow({
     return () => clearInterval(id);
   }, [frames, intervalMs]);
 
-  const aspectClass = aspect === "16/10" ? "aspect-[16/10]" : "aspect-[4/3]";
+  const aspectClass =
+    aspect === "2048/1280"
+      ? "aspect-[2048/1280]"
+      : aspect === "16/10"
+        ? "aspect-[16/10]"
+        : "aspect-[4/3]";
 
   return (
     <div className={`relative ${aspectClass} overflow-hidden bg-neutral-200`}>
       {frames.map((src, frameIndex) => (
-        <img
+        <Image
           key={src}
           src={src}
           alt=""
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+          fill
+          sizes="(max-width: 1920px) calc(100vw - 320px), 1600px"
+          quality={90}
+          priority={frameIndex === 0}
+          className={`object-cover transition-opacity duration-500 ${
             frameIndex === index ? "opacity-100" : "opacity-0"
           }`}
         />

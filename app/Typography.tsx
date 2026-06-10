@@ -1,3 +1,4 @@
+import { capitalizeSentences } from "../lib/capitalizeSentences";
 import { fixHangingPrepositions } from "../lib/fixHangingPrepositions";
 
 type TypographyProps = {
@@ -8,7 +9,7 @@ type TypographyProps = {
 };
 
 export function Typography({ children, as: Tag = "p", className, href }: TypographyProps) {
-  const text = fixHangingPrepositions(children);
+  const text = fixHangingPrepositions(capitalizeSentences(children));
 
   if (Tag === "a") {
     return (
