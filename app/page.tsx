@@ -327,7 +327,7 @@ export default function PortfolioSite() {
 
           <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden sm:max-w-none lg:mx-0">
             <img
-              src="/images/hero-v9.png"
+              src="/images/hero-v11.png"
               alt="Portrait"
               className="h-full w-full object-cover"
             />
