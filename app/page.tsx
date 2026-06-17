@@ -291,7 +291,7 @@ export default function PortfolioSite() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#f4f3ef] text-neutral-950 selection:bg-neutral-950 selection:text-white">
       <nav className="page-px fixed left-0 right-0 top-0 z-50 flex items-center justify-between bg-[#f4f3ef]/95 py-3 backdrop-blur-sm sm:py-4 md:py-5 text-[10px] font-medium uppercase leading-tight tracking-tight text-neutral-950 md:text-xs">
-        <a href="http://t.me/casperology" className="shrink-0" aria-label="@casperology">
+        <a href="#top" className="shrink-0" aria-label="На главную">
           <img
             src="/images/casperology-icon.png"
             alt=""
@@ -327,7 +327,7 @@ export default function PortfolioSite() {
 
           <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden sm:max-w-none lg:mx-0">
             <img
-              src="/images/hero-v11.png"
+              src="/images/hero-v12.png"
               alt="Portrait"
               className="h-full w-full object-cover"
             />
