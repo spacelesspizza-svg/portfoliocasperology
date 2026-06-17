@@ -7,6 +7,10 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   main {
     text-wrap: pretty;
@@ -15,8 +19,11 @@ body {
 
 @layer utilities {
   .page-px {
-    padding-left: 160px;
-    padding-right: 160px;
+    @apply px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 2xl:px-[160px];
+  }
+
+  .case-block-mt {
+    @apply mt-8 sm:mt-10 md:mt-[48pt];
   }
 }
 

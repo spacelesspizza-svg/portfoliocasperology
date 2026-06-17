@@ -11,7 +11,7 @@ type CaseGallerySlideshowProps = {
 
 export function CaseGallerySlideshow({
   frames,
-  intervalMs = 2000,
+  intervalMs = 7000,
   aspect = "2048/1280",
 }: CaseGallerySlideshowProps) {
   const [index, setIndex] = useState(0);
@@ -39,7 +39,7 @@ export function CaseGallerySlideshow({
           src={src}
           alt=""
           fill
-          sizes="(max-width: 1920px) calc(100vw - 320px), 1600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) calc(100vw - 80px), (max-width: 1536px) calc(100vw - 192px), calc(100vw - 320px)"
           quality={90}
           priority={frameIndex === 0}
           className={`object-cover transition-opacity duration-500 ${

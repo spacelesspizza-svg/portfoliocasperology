@@ -1,5 +1,8 @@
 import { capitalizeSentences } from "../lib/capitalizeSentences";
 import { fixHangingPrepositions } from "../lib/fixHangingPrepositions";
+import { normalizeRwb } from "../lib/normalizeRwb";
+import { replaceHyphensWithEmDash } from "../lib/replaceHyphensWithEmDash";
+import { replaceStraightQuotesWithGuillemets } from "../lib/replaceStraightQuotesWithGuillemets";
 
 type TypographyProps = {
   children: string;
@@ -9,7 +12,11 @@ type TypographyProps = {
 };
 
 export function Typography({ children, as: Tag = "p", className, href }: TypographyProps) {
-  const text = fixHangingPrepositions(capitalizeSentences(children));
+  const text = normalizeRwb(
+    replaceStraightQuotesWithGuillemets(
+      replaceHyphensWithEmDash(fixHangingPrepositions(capitalizeSentences(children))),
+    ),
+  );
 
   if (Tag === "a") {
     return (
